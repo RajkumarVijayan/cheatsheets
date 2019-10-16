@@ -1,0 +1,1438 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# #variables :
+# used to store values. 
+# #string :
+# a series of characters , surrounded by single or double quotes.
+
+# In[68]:
+
+
+print("hello world")
+
+msg= ("hello world")
+print(msg)
+
+#concatenation (combining strings)
+first_name  = 'albert'
+last_name = 'einstein'
+full_name = first_name+ ' ' + last_name
+print(full_name)
+
+
+# #lists
+# stores a series of items in a order. accessed through index within a loop.
+
+# In[70]:
+
+
+bikes = ['trek', 'redline', 'giant']
+first_bike = bikes[0]
+last_bike = bikes[-1]
+for bike in bikes:
+    print(bikes)
+
+
+# In[72]:
+
+
+#adding items to a list
+bikes = []
+bikes.append('trek')
+bikes.append('redline')
+bikes.append('giant')
+
+#making numerical values
+
+squares= []
+for x in range (1,11):
+    squares.append(x**2)
+
+#list comprehensions 
+squares = [ x**2 for x in range (1,11)]
+
+#slicing a list
+finishers = [ 'sam', 'bob', 'ada', 'bea']
+first_two= finishers[:2]
+
+#copying a list
+copy_of_bikes = bikes [:]
+
+
+# #tuples 
+# similar to list but immutable.  ()
+
+# In[73]:
+
+
+dimensions = (1920, 1080)
+
+
+# #if statements
+# #conditional tests 
+# equals x ==42
+# not equals x !=42
+# greater than x> 42
+# or equal to x >=42
+# less than x < 42
+# or equal to x<= 42
+
+# In[ ]:
+
+
+#conditional test in lists 
+'trek'in lists
+'surly'not in lists
+
+# assigning boolean values
+game_active = True
+can_edit = False
+
+# a simple if test
+
+if age >= 18:
+    print("you can vote!")
+    
+if age <4 : 
+    ticket_price = 0
+elif age < 18:
+        ticket_price = 10
+else : 
+        ticket_price = 15
+
+
+# #dictionaries store connections between pieces of information . each item in a dictionary is akey _ value pair. 
+
+# In[75]:
+
+
+alien = { 'color' : 'green', 'points': 5}
+
+
+# In[77]:
+
+
+#accessing the value.
+print("the aliens color is "+ alien['color'])
+
+
+# In[82]:
+
+
+#adding a new key value pair
+
+alien['x_position']= 0
+
+#looping through all key-value pairs
+
+fav_numbers = { 'eric': 17, 'ever': 4}
+for name, number in fav_numbers. items():
+    print(name + ' loves ' + str(number))
+
+
+# In[84]:
+
+
+#looping through all keys
+fav_numbers = { 'eric': 17, 'ever': 4}
+for name in fav_numbers.keys():
+    print(name + ' loves a number' )
+
+
+# In[87]:
+
+
+#looping through all the values
+fav_numbers = { 'eric': 17, 'ever': 4}
+for number in fav_numbers.values():
+    print(str(number)+ 'is a favorite')
+
+
+# #user input:
+# all input is stored  as string
+
+# In[89]:
+
+
+name = input("whats your name")
+print("hello, "+ name + "!")
+
+
+# In[91]:
+
+
+age = input("how old are you?")
+age = int(age)
+
+
+# In[93]:
+
+
+pi= input("whats the value of pi")
+pi= float(pi)
+
+
+# while loop :
+#     repeats a block as long a condition is true.
+
+# In[95]:
+
+
+# a simple while loop:
+current_value =  1
+while current_value <=5:
+    print(current_value)
+    current_value +=1
+
+
+# In[97]:
+
+
+msg = ' '
+while msg!= 'quit':
+    msg = input ("whats your message?")
+    print(msg)
+
+
+# #functions :
+# are named as blocks of code for one specific job. information passed to a function is argument. and information received is parameter.
+
+# In[99]:
+
+
+#a simple function.
+def greet_users():
+    """display a simple greeeting"""
+    print ("hello")
+
+greet_users()
+
+#passing an argument 
+
+def greet_users(username):
+    """displayed a personalised greetings."""
+    print ("hello, "+ username + "!")
+    
+greet_users('cindhu')
+
+
+# In[102]:
+
+
+#default values for parameters.
+
+def make_pizza(topping= 'bacon'):
+    """make a single topping pizza."""
+    print("have a "+ topping + "pizza!")
+    
+make_pizza()
+make_pizza('pepperoni')
+
+
+# In[104]:
+
+
+#returnng a value
+def add_numbers(x,y):
+    """add two numbers and return the sum"""
+    return x + y
+
+sum = add_numbers(3,5)
+print(sum)
+
+
+# #classes:
+# defines the behaviour of an object and the kinds of information an object can store. the information in a class is stored in an attribute. and the functions belongs to class are called methods. 
+# a child class inherits attributes and methods from parent class.
+
+# In[112]:
+
+
+#creating a dog class: 
+class Dog():
+        """representing a Dog."""
+        
+        def __init__(self, name):
+            """Initialize dog object."""
+            self.name= name
+        
+        def sit(self):
+            """Simulate sitting."""
+            print(self.name + " is sitting.")
+            
+my_dog= Dog('pesso')
+    
+print(my_dog.name + " is a great dog!")
+my_dog.sit()
+
+
+# In[114]:
+
+
+#inheritance:
+
+class SARDog(Dog):
+    """ Represent a serach dog."""
+    
+    def __init__(self, name):
+        """Initialize the sardog."""
+        super().__init__(name)
+        
+    def search(self):
+        """simulate searching ."""
+        print(self.name + "is searching." )
+
+        
+my_dog= SARDog('willie')
+
+print(my_dog.name + "is a search dog.")
+my_dog.sit()
+my_dog.search()
+
+
+# #working with files.
+# files are opened in read mode ('r'), but can also be opened in write mode ('w')
+# append mode('a')
+
+# #reading a file and storing its values. 
+# filename = 'rk.txt'
+# with open(filename) as file_object:
+#     lines = file_object.readlines()
+#     
+# for line in lines:
+#     print(line)
+# 
+# #writing to a file:
+# filename = 'journal.txt'
+# with open(filename, 'w') as file_object:
+#     file_object.write("I love programming.")
+#     
+# #append a file 
+# filename = 'journal.txt'
+# with open(filename, 'a') as file_object:
+#         file_object.write("\nI love games .")
+
+# #exceptions :
+# 
+# exceptions help to respond to errors that are likely to occur. you place code that might cause an error in a try block. 
+# code that should run in response to an error goes in the exception block. code thet should run only in try block was successful goes in the else block. 
+
+# In[120]:
+
+
+#catching an exception:
+prompt = "how many tickets do you need?"
+num_tickets = input(prompt)
+
+try:
+    num_tickets= int(num_tickets)
+except ValueError:
+    print("please try again")
+else :
+    print("your tickets are printing.")
+
+
+# #zen of Python:
+# * simple is better than complex.
+# 
+# If you a have both simple and complex solution. use simple , so code will be easier to maintain for you and others to build on that code later. 
+
+# #styling your code:
+# * USE FOUR SPACES PER indentation level 
+# * keep your lines to 79 characters or fewer
+# * use single blank lines to group parts of program.
+# #if statements:
+# If statements allows you to examine the current state of a program and respond appropriately to that state.
+# it can be one condition to a complex series of statements that identifies the exact condition you look for. 
+# 
+# #while 
+# While loops run as long as a certain conditions remain true.
+# as long as your user wants them to >
+# 
+
+# In[1]:
+
+
+#conditional tests
+car= 'bmw'
+car== 'bmw'
+
+
+# In[2]:
+
+
+car= 'audi'
+car=='bmw'
+
+
+# In[4]:
+
+
+#ignoring case when making a decision
+car= 'Audi'
+car.lower()=='audi'
+
+
+# In[5]:
+
+
+#checking for inequality
+topping='mushrooms'
+topping!='anchovies'
+
+
+# #numerical comparisons:
+# testing numerical values is similar to testing string values.
+
+# In[6]:
+
+
+age= 18
+age==18
+
+
+# In[7]:
+
+
+age!=18
+
+
+# In[8]:
+
+
+#comparison operators
+age= 19
+age <21
+
+
+# In[9]:
+
+
+age<=21
+
+
+# In[10]:
+
+
+age>21
+
+
+# In[11]:
+
+
+age>=21
+
+
+# #checking multiple conditions:
+# and operators returns if all the conditions are true,
+# or opertor returns if any one condition is true. 
+
+# In[15]:
+
+
+age_0= 22
+age_1=18
+age_0>=21 and age_1>=21
+
+
+# In[16]:
+
+
+age_1=23
+age_0>=21 and age_1>=21
+
+
+# In[17]:
+
+
+age_0= 22
+age_1=18
+age_0>=21 or  age_1>=21
+
+
+# In[18]:
+
+
+age_0=18
+age_0>=21 or  age_1>=21
+
+
+# #boolean values: is either true or false. variables with boolean values are often used to keep track of certain conditions in aprogram .
+# 
+
+# In[19]:
+
+
+#if statement
+age =19
+if age>=18:
+    print("you are old to vote")
+    
+#if else statement
+
+age=17
+if age >=18:
+    print("you are old enough to vote")
+else:
+    print ("you cant vote")
+
+
+# In[20]:
+
+
+age =12
+
+if age < 4:
+    price =0
+elif age< 18:
+    price = 5
+else :
+    price = 10
+    
+print("your cost is $"+ str(price) + ".")
+
+
+# #condition test with list:
+# you can easily test whether a value is in list . you can also test whether a list is empty before trying to loop through the list.
+
+# In[21]:
+
+
+players=['al', 'bea', 'cyn','dale']
+'al'in players
+
+
+# In[22]:
+
+
+'eric' in players
+
+
+# In[23]:
+
+
+banned_users= ['ann','chad','dee']
+user= 'erin'
+
+if user not in banned_users:
+    print("you can Play")
+
+
+# In[24]:
+
+
+players=[]
+if players:
+    for player in players :
+        print("player: " + player.title())
+else :
+    print ("we have no players yet!")
+
+
+# #accepting Input :
+# you can allow user to input values . all input are stoed as string
+
+# In[25]:
+
+
+name=input("what is your name? ")
+print("hello, "+ name + ".")
+
+
+# In[27]:
+
+
+#accepting numerical values:
+age = input("how old are you?")
+age=int(age)
+
+if age >=18:
+    print ("\n you can vote!")
+else:
+    print("\n you cant vote!")
+
+
+# #while loop:
+# a while loop repeats a condition as long as the condition is true.
+
+# In[1]:
+
+
+current_number=1
+while current_number<=5:
+    print(current_number)
+    current_number+=1
+
+
+# In[3]:
+
+
+prompt= "\ntell me something, and I'll"
+prompt+="repaet it back to you"
+prompt+= "\n Enter 'quit'to end the program"
+
+message=""
+while message !='quit':
+    message= input(prompt)
+    
+    if message != 'quit':
+        print(message)
+
+
+# In[4]:
+
+
+#using a Flag
+prompt= "\ntell me something, and I'll"
+prompt+="repaet it back to you"
+prompt+= "\n Enter 'quit'to end the program."
+
+active= True
+while active:
+    message= input(prompt)
+    
+    if message == 'quit':
+        active= False
+    else:
+        print(message)
+
+
+# In[5]:
+
+
+#using break to exit a loop:
+prompt= "\nwhat cities have you vivited?"
+prompt+= "\nEnter 'quit'when you 're done."
+
+while True:
+    city=input(prompt)
+    
+    if city== 'quit':
+        break
+    else:
+        print("I have been to "+ city + "!")
+
+
+# #sublime text:
+# sublime text does run programs that prompt user for input.
+# #breaking out of loops:
+# use break to quit a loop , use continue to skip over certain items, while looping through a list or dictionary. 
+
+# In[7]:
+
+
+banned_users= ['eve', 'fred', 'gary', 'helen']
+prompt= "\nadd player to your team."
+prompt+= "\nEnter 'quit'when you are done."
+
+players=[]
+while True:
+    player= input(prompt)
+    if player =='quit':
+        break
+    elif player in banned_users:
+        print(player + "is banned!")
+    else :
+        players.append(player)
+    
+    print("\nYour Team")
+    for player in players:
+        print(player)
+
+
+# #remove:
+# remove() method removes a specific value from alist, but only the first instance of the value you provide. use a while loop to remove all instances of a particular value
+
+# In[8]:
+
+
+pets= ['dogs', 'cat', 'dog', 'fish', 'cat', 'rabbit', 'cat']
+
+print(pets)
+
+
+# In[9]:
+
+
+while 'cat'in pets:
+    pets.remove('cat')
+print(pets)
+
+
+# #lists:
+# a list stores a series of items in a order . lists allows to store a set of information in one place, where you have a few items or a millions of items. list is powerful function that tie together a many important cocepts. 
+# 
+# use SQUARE bracets to define a LIST . use commas to seperate individual items in the list. use plural names to make your list easier to read. 
+# 
+# #tuples :
+# a tuple is like a list, except you cant change the value once it is defined. it is good for storing information that will not change during the life of a program. Use ().
+# can overrite an entire tuple , but cannot change the individual elemets in a tuple. 
+# #dictionaries:
+# stores connections between pieces of information. each item is a KEY-VALUE pair. {}
+
+# In[12]:
+
+
+users=['val','bob','mia', 'ron', 'ned']
+first_user=users[0]
+newest_user=users[-1]
+#changing values:
+
+users[0]='valerie'
+users[-2]='ronald'
+print(users)
+
+
+# In[14]:
+
+
+#adding an element :
+users.append('amy')
+
+#start with an empty list :
+users=[]
+users.append('val')
+users.append('bob')
+users.append('mia')
+
+#insrting elements at a particular place:
+users.insert(0, 'joe')
+users.insert(3, 'bea')
+print(users)
+
+
+# #eleting an element by its position:
+# del users[-1]
+# 
+# #removing an element by its value:
+# users.remove('mia')
+
+# #pop :
+# if you want  to work with a particular element , pop () takes an element from a stack of items, by default returns the last element in  a list.
+
+# In[16]:
+
+
+most_recent_user= users.pop()
+print(most_recent_user)
+
+
+# In[17]:
+
+
+first_user= users.pop(0)
+print(first_user)
+
+
+# In[18]:
+
+
+#len returns the number of items in a list.
+
+
+# In[21]:
+
+
+num_users=len(users)
+print("we have"+ str(num_users)+ "users.")
+
+
+# #sort() method changes the order of a list permanently. ruturns the copy of the list. original list is unchanged. you can sort in alphabetical order. case sensitivity may affect the sort order.
+
+# In[22]:
+
+
+#sorting permanently:
+users.sort()
+users.sort(reverse=True)
+
+
+# In[23]:
+
+
+#sort temporarily:
+print(sorted(users))
+print(sorted(users, reverse=True))
+
+#reverse the order:
+users.reverse()
+
+
+# In[24]:
+
+
+#looping through a list:
+
+
+# #range() functon:
+# to work with a set of numbers eficiently. starts by 0 as default. stops one number below the number passed to it. 
+
+# In[ ]:
+
+
+#printing numbers 0 to 1000:
+for number in range(1001):
+    print(number)
+
+
+# #printng numbers 1 to 1000:
+# for number in range(1,1001):
+#     print(number)
+
+# In[28]:
+
+
+#making a list of numbers from 1 to million:
+numbers= list(range(1,1000001))
+
+
+# In[29]:
+
+
+#simple statistics:
+#finding the minimum value in a list:
+ages=[93,99,66,17,85,1,35,82,2,77]
+youngest=min(ages)
+
+#finding the maximum values:
+ages=[93,99,66,17,85,1,35,82,2,77]
+oldest=max(ages)
+
+#findin the sum of all wages:
+ages=[93,99,66,17,85,1,35,82,2,77]
+total_years=sum(ages)
+
+
+# #slicing a list:
+# start with the index of the first item , : ,index after the last item you want. leave the first and last index to start at begining and through the end of the list. 
+
+# In[31]:
+
+
+#getting first 3 itemS:
+finishers=['kai','abe', 'ada', 'gus', 'zoe']
+first_three=finishers[ :3]
+middle_three=finishers[1:4]
+last_three=finishers[-3:]
+
+#copying a list: if you try without this approach, what ever you do the copied list will affect the original list.
+# In[32]:
+
+
+finishers=['kai','abe', 'ada', 'gus', 'zoe']
+copy_of_finishers= finishers[ : ]
+
+
+# #list comprehensions:
+# using a loop to generate a list of square numbers.
+
+# In[34]:
+
+
+squares=[]
+for x in range(1,11):
+    square = x**2
+    squares.append(square)
+
+
+# In[35]:
+
+
+#using a comprehension to generate a list of square numbers:
+squares = [x**2 for x in range(1,11)]
+
+
+# In[36]:
+
+
+#using a loop to convert a list of names to upper case:
+names =['kai','abe', 'ada', 'gus', 'zoe']
+
+upper_names = []
+for name in names:
+    upper_names.append(name.upper())
+    
+#using a comprehension to convert a list of names to upper case:
+names =['kai','abe', 'ada', 'gus', 'zoe']
+
+upper_names = [name.upper() for name in names]
+
+
+# In[38]:
+
+
+#tuples:
+#defining a tuple:
+dimensions = (800,600)
+
+#looping through a tuple:
+for dimension in dimensions:
+    print(dimension)
+
+#Overwriting a tuple 
+dimensions = (800, 600)
+print(dimensions)
+
+
+# In[39]:
+
+
+dimensions = (1200, 900)
+
+
+# In[41]:
+
+
+#visualising your code:
+dogs = []
+dogs.append('willie')
+dogs.append('hootz')
+dogs.append('peso')
+dogs.append('goblin')
+
+for dog in dogs:
+    print("hello "+ dog + "!")
+print("i love these dogs!")
+
+
+# In[42]:
+
+
+print ("\nThese were my first two dogs:")
+old_dogs  = dogs[:2]
+for old_dog in old_dogs:
+    print(old_dog)
+
+
+# In[43]:
+
+
+del dogs[0]
+dogs.remove('peso')
+print(dogs)
+
+
+# #classes:
+# classes are fiundation of object oriented program. classes can inherit from each other and extend the functionality of existing class.
+# defines a general behaviour that whole category of objects can have.
+
+# #craeting a class:
+# the information is stored in variables called attributes.
+# and the behaviour is represented by functions.
+# functions that are part of a class are called methods.
+
+# In[45]:
+
+
+#the car class:
+class Car():
+    """A simple attempt to model a car"""
+
+    def __init__(self, make, model, year):
+        """Ïnitialize car attributes."""
+        self.make= make
+        self.model= model
+        self.year= year
+        
+        #fuel capacity and level in gallons:
+        self.fuel_capacity = 15
+        self.fuel_level = 0
+        
+    def fill_tank(self):
+        """Fill gas tank to capacity."""
+        self.fuel_level = self.fuel_capacity
+        print("Fuel tank is full.")
+        
+    def drive(self):
+        """Simulate driving."""
+        print ("the car is moving.")
+
+
+# In[ ]:
+
+
+#creating an object from a class
+my_car = Car('audi', 'a4', 2016)
+
+#accesing attribute values:
+print(my_car.make)
+print(my_car.model)
+print(my_car.year)
+
+#calling methods
+my_car.fill_tank()
+my_car.drive()
+
+#creating multiple objects:
+my_car = Car('audi', 'a4', 2016)
+my_old_car = Car('subabru', 'outback', 2013)
+my_truck = Car('toyota', 'tacamo', 2010)
+
+
+# In[ ]:
+
+
+#modify an attribute directly 
+
+my_new_car= Car('audi', 'a4', 2016)
+my_new_car.fuel_level = 5 
+
+#writing a method to update an attribute value:
+def update_fuel_level(self, new_level):
+    """update the level """
+    if new_level <=self.fuel_capacity:
+        self.fuel_level = new_level
+    else:
+        print("The tank cant hold  that much!")
+
+#writing method to increment an attribute value:
+def add_fuel(self, amount):
+    """add fuel to the tank."""
+    if (self.fuel_level + amount <= self.fuel_capacity):
+        self.fuel_level += amount
+        print("added fuel.")
+    
+    else:
+        print("the tank wont hold that much")
+
+
+# #naming conventions:
+# class names are written in camel case
+# object names are written lowercase with underscores. 
+# modules that contains classes should be named in lower case with underscores
+
+# #class inheritance:
+# if a class is a specialized version of another class. use inheritance. 
+# the child class is free to introduce new attributes and methods and override attributes and methods of the parent class.
+# to include from another include the name of the parent class in paranthesis when defining new class. 
+# 
+# 
+
+# In[ ]:
+
+
+#The __init__() method for a child class:
+class ElectricCar(Car):
+    """A simple model of an electric car."""
+    def __init__(self, make, model, year):
+        """Initialize an electric car."""
+        super().__init__(make, model, year)
+        
+        #attributes specific to electric cars.
+        #battery capacity in kWh.
+        self.battery_size = 70
+        # charge level in %
+        self.charge_level = 0
+
+
+# In[ ]:
+
+
+#Adding new methods to the child class
+
+class ElectricCar(Car):
+    #--snip--
+    def charge(self):
+        """Fully charge the Vehicle."""
+        self.charge_level = 100
+        print("The vehicle is fully charged.")
+        
+#using child methods and parent methods.
+my_ecar= ElectricCar('tesla', 'model s', 2016)
+
+my_ecar.charge()
+my_ecar.drive()
+
+
+# #overriding parent methods:
+# class ElectricCar(Car):
+#    
+#     def fill_tank(self):
+#         """Display an error message."""
+#         print("this car has no fuel tank!")
+
+# #instances as attributes:
+# a class can have objects as attributes. this allows classes to work together to model complex situations. 
+
+# In[59]:
+
+
+# A Battery class()
+class Battery():
+    """a battery for an electric car."""
+    def __init__(self, size= 70):
+        """Initialize battery attributes. """
+        #capacity in kWh, charge level in %.
+        self.size = size
+        self.charge_level = 0 
+        
+    def get_range(self):
+        """return the battery's range."""
+        if self.size ==70:
+            return 240
+        elif self.size ==85:
+            return 270
+
+
+# In[ ]:
+
+
+#using an instance as an attribute:
+class ElectricCar(Car):
+    --snip--
+    
+    def __init__(self, make, model, year):
+        """Initialize an electric car."""
+        super().__init__(make, model, year)
+        
+        #attribute specific to electric cars.
+        self.battery= Battery()
+        
+    def charge(self):
+        """fukly charge the vehicle."""
+        self.battery.charge_level = 100
+        print("the vehicle is fully charged.")
+    
+#using inheritance
+
+my_ecar = ElectricCar('tesla', 'model x', 2016)
+
+my_ecar.charge()
+print(my_ecar.battery.get_range())
+my_ecar.drive()
+
+
+# #importing classes:
+# to keep your program files uncluttered you can store your classes in modules and import the classes you need into your program. 
+
+# #storing classes in a file
+# car.py
+
+# In[ ]:
+
+
+""" represent gas and electric cars."""
+class Car():
+    """A simple attempt to model a car."""
+    --snip--
+    
+class battery():
+    """a battery for an electric car ."""
+    --snip--
+    class ElectricCar(Car):
+        """ A simple model of an electric car."""
+        --snip--
+
+
+# In[ ]:
+
+
+#importing individual classes from a module
+#my_cars.py
+from car import Car, ElectricCar
+
+my_beetle = Car('volkswagen', 'beetle', 2016)
+my_beetle.fill_tank()
+my_bettle.drive()
+
+my_tesla = ElectricCar('tesla', 'model s', 2016)
+my_tesla.charge()
+my_tesla.drive()
+
+#importing an entire module
+
+import car
+
+my_beetle = car.Car('volkswagen','beetle', 2016)
+my_beetle.fill_tank()
+my_beetle.drive()
+
+my_tesla = car.ElectricCar('tesla', 'model s', 2016)
+my_tesla.charge()
+my_tesla.drive()
+
+
+# #storing objects in a list:
+# a list can hold as many a u want 
+
+# In[ ]:
+
+
+# a fleet of rental cars
+
+from car import Car, ElectricCar
+
+#make lists to hold a fleet of cars.
+gas_fleet= []
+electric_fleet= []
+# make 500 gas cars and 250 electric cars.
+for _ in range(500):
+    car = Car('ford', 'focus', 2016)
+    gas_fleet.append(car)
+
+for _ in range(250):
+    ecar = ElectricCar('nissan', 'leaf', 2016)
+    electric_fleet.append(ecar)
+
+#Fill the gas cars, and charge electric cars. 
+for car in gas_fleet:
+    car.fill_tank()
+
+for ecar in electric_fleet:
+    ecar.charge()
+    
+print("gas cars:", len(gas_fleet))
+print("Electric cars:", len(electric_fleet))
+
+
+# #functions:
+# are named blocks of code designed to do specific job. allows you to write code once that cana be run whenever you need to accomplish the task. 
+# can take information they need and return information they generate. 
+# 
+# #defining a function.
+# first line is the definition marked by keyword def.
+# the name of function followed by a set of paranthesis and a colon. a docstring in triple quotes describes the function. 
+# body of the function is intended one level.
+# to call a function, give the name of the function followed by set of paranthesis.
+# 
+
+# In[1]:
+
+
+def greet_user():
+    """display a simple greeting."""
+    print("hello.")
+    
+greet_user()
+
+
+# #passing information:
+# information passed to a function are called Arguments. received are called parameters. 
+# arguments are icluded in the paranthesis after the function's name . parameter's are listed in the functions definition.
+
+# In[2]:
+
+
+def greet_user(username):
+    """Display a simple greeting."""
+    print("hello,"+ username + "!")
+
+greet_user('jessie')
+greet_user('diana')
+greet_user('brandon')
+
+
+# #positional and keyword arguments:
+# the two main kinds of arguments are positional and keyword. positional argument  matches first argument in the function call to the first parameter inthe function definition. 
+# 
+# #keyword:
+# you specify which parameter each argument should be assigned to in the functional call.
+# when you use keyword arguments the order doesnt matter.
+
+# In[3]:
+
+
+#usujng positional arg:
+def describe_pet(animal, name):
+    """Display information about a pet."""
+    print("\nI have a "+ animal + ".")
+    print("its name is " + name + ".")
+
+describe_pet('hamster', 'harry')
+describe_pet('dog', 'willie')
+
+
+# In[4]:
+
+
+#using keyword arguments:
+def describe_pet(animal, name):
+    """Dispaly information about a pet."""
+    print("\nI have a"+ animal + ".")
+    print("its name is " + name + ".")
+    
+describe_pet( animal= 'hamster', name= 'harry')
+describe_pet(name = 'willie', animal= 'dog')
+
+
+# #default values:
+# can provide default values for a parameter. when function call ignores argument , default values will be used. parameters with default values must be listed after parameters without default values in the functions def, so that positional arguments still work correctly.
+
+# In[1]:
+
+
+def describe_pet(name, animal='dog'):
+    """Display information about a pet."""
+    print("\nI have a "+ animal + ".")
+    print("its name is " + name + ".")
+    
+describe_pet('harry','hamster')
+describe_pet('willie')
+
+
+# #return values.
+# A function can return a value or set of values. when a function returns a value , the calling line must provide a variable in which to store the return value. A function stops running when it reaches statement.
+# 
+
+# In[2]:
+
+
+#returning a single value:
+def get_full_name(first, last):
+    """Return the neatly formated full name."""
+    full_name = first + ' '+ last
+    return full_name.title()
+
+musician = get_full_name('jimi', 'hendrix')
+print(musician)
+
+
+# In[3]:
+
+
+#return a dictionary
+def build_person(first, last):
+    """Return a dictionary of information about a person."""
+    person = {'first' : first, 'last': last}
+    return person
+
+musician = build_person('jimi', 'hendrix')
+print(musician)
+
+
+# In[4]:
+
+
+#return a dictionary with optional values:
+def build_person(first, last, age= None):
+    """return a dictionary of information about a person. """
+    person = {'first': first, 'last': last}
+    if age:
+        person ['age']= age
+    return person
+
+musician = build_person('jimi', 'hendrix', 27)
+print(musician)
+
+musician= build_person('janis', 'joplin')
+print(musician)
+
+
+# #passing a list to a function:
+# can pass a list as an argument to a function, and the function can work with the values in the list. any changes the function makes to a list will affect the original list. you can prevent by passing a copy of list as an argument.
+
+# In[5]:
+
+
+#passing a list as an argument:
+def greet_users(names):
+    """Print a simple greeting to everyone."""
+    for name in names:
+        msg= "Hello, " + name + "!"
+        print(msg)
+
+usernames= ['hannah', 'ty','margot']
+greet_users(usernames)
+
+
+# #allowing a function to modify a list:
+# the following examples sends a list of model to a function for printing. the original list is emptied and the second list is fillied.
+# 
+
+# In[6]:
+
+
+def print_models(unprinted, printed):
+    """3d print a set of models."""
+    while unprinted:
+        current_model = unprinted.pop()
+        print("printing " + current_model)
+        printed.append(current_model)
+    
+#store some unprinted designs,
+
+# and print each of them.
+unprinted = ['phone case', 'pendant', 'ring']
+printed= []
+print_models(unprinted, printed)
+
+print("\nUnprinted:", unprinted)
+print("printed:", printed)
+
+
+# #preventing a function from identifying a list:
+# the following example is the same as the previous one; except the original list is unchanged after calling print_models.
+# 
+
+# In[8]:
+
+
+def print_models(unprinted, printed):
+    """3d print a set of models."""
+    while unprinted:
+        current_model = unprinted.pop()
+        print("printing " + current_model)
+        printed.append(current_model)
+        
+        
+#store some unprinted designs,
+# and print each of them :
+original= ['phone case', 'pendant', 'ring']
+printed= []
+
+print_models(original[:], printed)
+print("\noriginal:", original)
+print("printed:", printed)
+
+
+# #passing an arbitrary number of arguments:
+# sometimes you wont know how many arguments a function will need to accept. python will allow you to collect a arbitrary number of arguments into one parameter using operators. a parameter that accepts an arbitrary number of arguments must come last in the function definition. the ** operator allows a function to collect arbitrary number of keyword arguments.
+# 
+
+# In[11]:
+
+
+#Collecting an arbitrary number of arguments:
+def make_pizza(size, *toppings):
+    """make a pizza."""
+    print("\nMaking a " + size + "pizza.")
+    print("toppings:")
+    for topping in toppings:
+        print("- " + topping)
+        
+#make three pizzas with different toppings.
+make_pizza('small', 'pepperoni')
+make_pizza('large', 'bacon bits', 'pineapple')
+make_pizza('medium', 'mushroom', 'peppers', 'onions','extra cheese')
+
+
+# In[12]:
+
+
+#collecting an arbitrary number of keywords:
+def build_profile(first, last, **user_info):
+    """Build a user's profile dictionary."""
+    #build a dict with the required keys.
+    profile = {'first': first, 'last': last}
+    
+    #add any other keys and values:
+    for key, value in user_info.items():
+        profile[key] = value
+        
+    return profile
+
+# create two users with different kinds
+# of information.
+user_0 = build_profile('albert','einstein', location = 'princeton')
+user_1 = build_profile('marie', 'curie', location = 'paris', field= 'chemistry')
+
+print(user_0)
+print(user_1)
+
+
+# In[ ]:
+
+
+
+
